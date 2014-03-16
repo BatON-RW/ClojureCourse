@@ -101,7 +101,7 @@
   ;; 4. Use function 'merge' and merge element1 with each element2.
   ;; 5. Collect merged elements.
   (reduce (fn [res element1]
-      (conj res (first (map #(merge %1 element1) (filter #(= (get element1 column1) (get %1 column2)) data2)))))
+      (into [] (concat res (map #(merge %1 element1) (filter #(= (get element1 column1) (get %1 column2)) data2)))))
     [] 
     data1))
 
